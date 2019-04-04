@@ -1,0 +1,24 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.1/dist/mini-default.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <label><input type="checkbox" v-model="view_selected" /> View selected</label><br />
+      <input type="text" v-model="search" placeholder="Search...">
+      <div class="row" >
+      <div class="col-sm-12 col-md-4 col-lg-3" v-for="section in sections" v-show="showSection(section)">
+        <hr/>
+        <h3>{{ section.title }}</h3>
+        <div v-for="item in filteredItems(section)" v-if="!view_selected || item.selected">
+          <label><input type="checkbox" v-model="item.selected" />{{ item.name }}</label>
+        </div>
+      </div>
+      </div>
+    </div>
+    <script src="veggie/veggie.js"></script>
+  </body>
+</html>
